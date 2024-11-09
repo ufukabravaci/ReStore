@@ -8,7 +8,7 @@ interface StoreContextValue {
     removeItem: (productId: number, quantity: number) => void;
 }
 
-export const StoreContext = createContext<StoreContextValue | undefined>(undefined);
+export const StoreContext = createContext <StoreContextValue | undefined>(undefined);
 
 // eslint-disable-next-line react-refresh/only-export-components
 export function useStoreContext() {
@@ -22,6 +22,7 @@ export function useStoreContext() {
 
 export function StoreProvider({children} : PropsWithChildren<unknown>){
     const [basket, setBasket] = useState<Basket | null>(null);
+    
     function removeItem(productId:number, quantity:number){
         if (!basket) return;
         const items = [...basket.items];
