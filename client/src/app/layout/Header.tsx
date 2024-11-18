@@ -11,7 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Link, NavLink } from "react-router-dom";
-import { useStoreContext } from "../context/StoreContext";
+import { useAppSelector } from "../store/configureStore";
 
 const midLinks = [
   { title: "catalog", path: "/catalog" },
@@ -46,7 +46,7 @@ export default function Header({ darkMode, setDarkMode }: Props) {
     setDarkMode(!darkMode);
   };
 
-  const {basket} = useStoreContext();
+  const {basket} = useAppSelector((state => state.basket));
   const itemCount = basket?.items.reduce((sum,item) => item.quantity + sum ,0);
   //At 33 row, we I used listItem to use mui but also with component prop we can make it act like a NavLink
   //and with to path we route it to its path. This is the technique for use navlinks with mui styles.
